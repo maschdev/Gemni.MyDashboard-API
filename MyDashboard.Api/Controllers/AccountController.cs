@@ -34,6 +34,8 @@ namespace MyDashboard.Api.Controllers
             _tokenOptions = jwtOptions.Value;
             ThrowIfInvalidOptions(_tokenOptions);
 
+            // Teste
+
             _serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
