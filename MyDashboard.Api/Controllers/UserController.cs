@@ -11,7 +11,6 @@ namespace MyDashboard.Api.Controllers
     public class UserController : BaseController
     {
         private readonly UserHandler _handler;
-        private readonly IUow _uow;
 
         public UserController(IUow uow, UserHandler handler) : base(uow)
         {

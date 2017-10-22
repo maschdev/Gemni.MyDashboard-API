@@ -30,8 +30,7 @@ namespace MyDashboard.Api.Controllers
 
         [HttpPost]
         [Route("v1/customer")]
-        //[Authorize(Policy = "Admin")]
-        [AllowAnonymous]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Post([FromBody]RegisterCustomerInput command)
         {
             command.Password = command.Username + "123";
@@ -44,20 +43,11 @@ namespace MyDashboard.Api.Controllers
 
         [HttpPut]
         [Route("v1/customer")]
-        //[Authorize(Policy = "Admin")]
-        [AllowAnonymous]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Put([FromBody]UpdateCustomerInput command)
         {
             var result = _handler.Handle(command);
             return await Response(result, _handler.Notifications);
-
-            //if (_handler.Valid)
-            //{
-            //    return Ok(result);
-            //}
-            //    
-            //else
-            //    return BadRequest(_handler.Notifications);
         }
 
         [HttpDelete]

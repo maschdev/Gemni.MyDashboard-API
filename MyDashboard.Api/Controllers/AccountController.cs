@@ -130,7 +130,7 @@ namespace MyDashboard.Api.Controllers
                 new GenericIdentity(customer.Email.Address, "Token"),
                 new[] {
                     new Claim("MyDashboard", "Admin")
-                    //new Claim("MyDashboard", "User")
+                    //,new Claim("MyDashboard", "User")
                 }));
             }
             else

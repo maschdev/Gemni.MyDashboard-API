@@ -16,7 +16,8 @@ namespace MyDashboard.Domain.Contracts
                 .HasMaxLen(user.Name, 60, "Username", "Tamanho do usuário inválido!")
                 .HasMinLen(user.Name, 3, "Username", "Tamanho do usuário inválido!")
                 .IsNotNullOrEmpty(user.Password, "Password", "Senha obrigatório")
-                .AreNotEquals(user.Password, EncryptPassword(user.ConfirmPassword), "Password", "As senhas não coincidem!");
+                //.AreNotEquals(user.Password, EncryptPassword(user.ConfirmPassword), "Password", "As senhas não coincidem!");
+                .AreEquals(user.Password, EncryptPassword(user.ConfirmPassword), "Password", "As senhas não coincidem!");
         }
 
 
