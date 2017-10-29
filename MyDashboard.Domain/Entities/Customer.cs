@@ -30,12 +30,12 @@ namespace MyDashboard.Domain.Entities
 
         public void Deactivate() => Enable = false;
 
-        public void Update(Name name, Email email, User user, Document document, string phone)
+        public void Update(Name name, Email email, Document document, string phone)
         {
             Name.Update(name.FirstName, name.LastName);
             Email.Udpate(email.Address);
             Document.Update(document.Number);
-            User.Update(user.Name);
+            //User.Update(user.Name);
             Phone = phone;
         }
 

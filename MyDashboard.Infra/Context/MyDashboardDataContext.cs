@@ -4,12 +4,12 @@ using System.Data.Entity;
 
 namespace MyDashboard.Infra.Context
 {
-   public class MyDashboardDataContext : DbContext
+    public class MyDashboardDataContext : DbContext
     {
         //MyDashboardConnectionString
         public MyDashboardDataContext() :
             base(Shared.RunTime.ConnectionString)
-            //base(@"Server=(LocalDb)\LocalNT; Integrated Security=true; AttachDbFileName=C:\DB\MyDashboard.mdf;User Id=usergemni;Password=pw23")
+        //base(@"Server=(LocalDb)\LocalNT; Integrated Security=true; AttachDbFileName=C:\DB\MyDashboard.mdf;User Id=usergemni;Password=pw23")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
@@ -24,10 +24,10 @@ namespace MyDashboard.Infra.Context
         {
             modelBuilder.Configurations.Add(new CustomerMap());
             modelBuilder.Configurations.Add(new DashboardMap());
-           modelBuilder.Configurations.Add(new ProfileMap());
+            modelBuilder.Configurations.Add(new ProfileMap());
             modelBuilder.Configurations.Add(new UserMap());
         }
 
-        
+
     }
 }

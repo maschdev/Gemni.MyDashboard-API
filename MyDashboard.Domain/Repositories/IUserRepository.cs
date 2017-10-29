@@ -7,7 +7,9 @@ namespace MyDashboard.Domain.Repositories
 {
     public interface IUserRepository
     {
-        IEnumerable<GetUserResult> GetByFilter(Guid id, string document, string dashboardName, string userName);
+        IEnumerable<DbUserByFilterResult> GetByFilter(string document, string dashboardName, string userName);
+
+        DbUserDashboardInfoResult GetUserDashboardInfo(Guid id);
 
         User Get(Guid id);
     }

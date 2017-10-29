@@ -109,12 +109,15 @@
     <Compile Include="Commands\Inputs\DeleteDashboardInput.cs" />
     <Compile Include="Commands\Inputs\GetCustomerInput.cs" />
     <Compile Include="Commands\Inputs\GetDashboardInput.cs" />
+    <Compile Include="Commands\Inputs\GetUserDashboardInfoInput.cs" />
     <Compile Include="Commands\Inputs\GetUserInput.cs" />
     <Compile Include="Commands\Inputs\RegisterCustomerInput.cs" />
     <Compile Include="Commands\Inputs\RegisterDashboardInput.cs" />
     <Compile Include="Commands\Inputs\UpdateCustomerInput.cs" />
     <Compile Include="Commands\Inputs\UpdateDashboardInput.cs" />
     <Compile Include="Commands\Results\AuthenticateUserResult.cs" />
+    <Compile Include="Commands\Results\DbUserByFilterResult.cs" />
+    <Compile Include="Commands\Results\DbUserDashboardInfoResult.cs" />
     <Compile Include="Commands\Results\DeleteCustomerResult.cs" />
     <Compile Include="Commands\Results\DeleteDashboardResult.cs" />
     <Compile Include="Commands\Results\GetCustomerResult.cs" />

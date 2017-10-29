@@ -29,7 +29,7 @@ namespace MyDashboard.Infra.Repositories
 
         public IEnumerable<Dashboard> GetAll(Guid userId)
         {
-            return _context.Dashboards.AsNoTracking().Where(x => x.UserId == userId);
+            return _context.Dashboards.AsNoTracking().Where(x => x.UserId == userId).OrderBy(x => x.Order);
         }
 
         public void Save(Dashboard dashboard)
@@ -55,8 +55,8 @@ namespace MyDashboard.Infra.Repositories
                     dashboardRepository.Update(dashboard.Title, dashboard.Order, dashboard.Url);
                     Update(dashboardRepository);
                 }
-            }
-
+            };
+           
         }
 
         public void Update(Dashboard dashboard)

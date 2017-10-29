@@ -41,13 +41,11 @@ namespace MyDashboard.Infra.Repositories
         public void Save(Customer customer)
         {
             _context.Customers.Add(customer);
-            //_context.SaveChanges();// Sera alterado
         }
 
         public void Update(Customer customer)
         {
             _context.Entry(customer).State = EntityState.Modified;
-            //_context.SaveChanges(); // Sera alterado
         }
     }
 }

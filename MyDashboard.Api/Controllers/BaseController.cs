@@ -30,7 +30,7 @@ namespace MyDashboard.Api.Controllers
                         data = result
                     });
                 }
-                catch
+                catch ( Exception ex)
                 {
                     return BadRequest(new
                     {

@@ -16,7 +16,7 @@ namespace MyDashboard.Api.Security
 
         public DateTime IssuedAt { get; set; } = DateTime.UtcNow;
 
-        public TimeSpan ValidFor { get; set; } = TimeSpan.FromDays(2);
+        public TimeSpan ValidFor { get; set; } = TimeSpan.FromDays(1);
 
         public DateTime Expiration => IssuedAt.Add(ValidFor);
 

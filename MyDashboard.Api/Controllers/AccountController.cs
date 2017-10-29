@@ -45,7 +45,7 @@ namespace MyDashboard.Api.Controllers
 
         [HttpPost]
         [Route("v1/authenticate")]
-        [AllowAnonymous]                     // FromFrom
+        [AllowAnonymous]                     
         public async Task<IActionResult> Post([FromBody] AuthenticateUserInput command)
         {
             if (command == null)

@@ -20,20 +20,19 @@ namespace MyDashboard.Api.Controllers
         [HttpPost]
         [Route("v1/dashboard")]
         [Authorize(Policy = "Admin")]
-        public async Task<IActionResult> Post(RegisterDashboardInput command)
+        public async Task<IActionResult> Post([FromBody] RegisterDashboardInput[] command)
         {
-            var result = _handler.Handle(command);
+            var input = new RegisterDashboardInput();
+
+            Parallel.ForEach(command, dashboard => 
+            {
+                input.AddDashboards(dashboard.Id, dashboard.Title, dashboard.Order, dashboard.Url, dashboard.CustomerId);
+            });
+
+            var result = _handler.Handle(input);
 
             return await Response(result, _handler.Notifications);
-
-            //if (_handler.Valid)
-            //{
-            //    _uow.Commit();
-            //    return Ok(result);
-            //}
-            //    
-            //else
-            //    return BadRequest(_handler.Notifications);
+           
         }
 
         [HttpGet]
@@ -48,11 +47,22 @@ namespace MyDashboard.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/dashboarduser/{userid}")]
+        [Route("v1/dashboardclient/{clientid}")]
         [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> GetByClient(string clientid)
+        {
+            var command = new GetDashboardInput() { Id = Guid.Empty, UserId = new Guid(clientid) };
+            var result = _handler.Handle(command);
+
+            return await Response(result, _handler.Notifications);
+        }
+
+        [HttpGet]
+        [Route("v1/dashboarduser/{userid}")]
+        [Authorize(Policy = "User")]
         public async Task<IActionResult> GetByUser(string userid)
         {
-            var command = new GetDashboardInput() { Id = Guid.Empty, UserId = new Guid(userid)};
+            var command = new GetDashboardInput() { Id = Guid.Empty, UserId = new Guid(userid) };
             var result = _handler.Handle(command);
 
             return await Response(result, _handler.Notifications);
@@ -60,7 +70,7 @@ namespace MyDashboard.Api.Controllers
 
         [HttpGet]
         [Route("v1/dashboard/{id}")]
-        [AllowAnonymous]
+        [Authorize(Policy = "User")]
         public async Task<IActionResult> Get(string id)
         {
             var command = new GetDashboardInput() { Id = new Guid(id), UserId = Guid.Empty };

@@ -16,7 +16,7 @@ namespace MyDashboard.Domain.Contracts
                 .HasMinLen(dashboard.Title, 3, "Title", "Tamanho do dashboard inválido!")
                 .IsNotNullOrEmpty(dashboard.Url, "Url", "Link do dashboard obrigatório")
                 .IsUrl(dashboard.Url, "Url", "Link do dashboard inválido!")
-                .IsLowerOrEqualsThan(dashboard.Order, 0, "Order", "Número da ordem inválido");
+                .IsGreaterOrEqualsThan(dashboard.Order, 0, "Order", "Número da ordem inválido");
         }
     }
 }

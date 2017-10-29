@@ -20,9 +20,9 @@ namespace MyDashboard.Api.Controllers
         [HttpGet]
         [Route("v1/customer/{id}")]
         [Authorize(Policy ="Admin")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(string id)
         {
-            var command = new GetCustomerInput() { id = id };
+            var command = new GetCustomerInput() { id = new Guid(id) };
             var result = _handler.Handle(command);
 
             return await Response(result, _handler.Notifications);
@@ -33,8 +33,8 @@ namespace MyDashboard.Api.Controllers
         [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Post([FromBody]RegisterCustomerInput command)
         {
-            command.Password = command.Username + "123";
-            command.ConfirmPassword = command.Username + "123";
+            command.Password = command.FirstName + "123";
+            command.ConfirmPassword = command.FirstName + "123";
             command.Username = command.FirstName + command.LastName;
 
             var result = _handler.Handle(command);

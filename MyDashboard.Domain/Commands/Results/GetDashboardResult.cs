@@ -14,12 +14,14 @@ namespace MyDashboard.Domain.Commands.Results
 
         public class Dashboard
         {
+            public string Id { get; set; }
             public string Title { get; set; }
             public string Order { get; set; }
             public string Url { get; set; }
             public string UserId { get; set; }
         }
 
+        public string Id { get; set; }
         public string Title { get; set; }
         public string Order { get; set; }
         public string Url { get; set; }

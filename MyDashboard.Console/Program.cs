@@ -19,9 +19,9 @@ namespace MyDashboard.Console
         static void Main(string[] args)
         {
             //CadastroNovoCliente();
-            //CadastrarDashboards();
+            CadastrarDashboards();
 
-            ValidarAcesso();
+            //ValidarAcesso();
 
             //EncryptPassword("gemniadm");
         }
@@ -69,26 +69,26 @@ namespace MyDashboard.Console
             var customerRepository = new CustomerRepository(context);
             var dashboardRepository = new DashboardRepository(context);
 
-            var customer = customerRepository.Get(new Guid("22D2F76F-BD1D-42EA-A797-295C87A1950D"));// caiorapha
+            var customer = customerRepository.Get(new Guid("DF94D184-0623-436E-B40E-430CDC71185B"));// caiorapha
 
             var dashboards = new List<RegisterDashboardInput>();
             var dashboard = new RegisterDashboardInput()
             {
-                Id = Guid.Empty,
+                Id = "0CFB690B-2DFD-4B42-B061-3AA29D65A2DC",
                 Title = "Dashboard 3",
                 Order = 3,
                 Url = "https://app.powerbi.com/view?r=eyJrIjoiZDM1MWY3ZGYtMzhmYi00Y2NjLWFiZWQtMWI5NjYyYTdmNzdhIiwidCI6ImFjNTAxNjA3LWJmN2MtNDk2NC04MjY1LWMxMjZmNzg1ZmU4ZSJ9",
-                UserId = customer.UserId
+                CustomerId = customer.Id.ToString()
             };
 
             dashboards.Add(dashboard);
             dashboard = new RegisterDashboardInput()
             {
-                Id = Guid.Empty,
+                Id = "CF78E30D-EA70-438B-B1C2-8C539310907E",
                 Title = "Dashboard 4",
                 Order = 4,
                 Url = "https://app.powerbi.com/view?r=eyJrIjoiZDM1MWY3ZGYtMzhmYi00Y2NjLWFiZWQtMWI5NjYyYTdmNzdhIiwidCI6ImFjNTAxNjA3LWJmN2MtNDk2NC04MjY1LWMxMjZmNzg1ZmU4ZSJ9",
-                UserId = customer.UserId
+                CustomerId = customer.UserId.ToString()
             };
 
             dashboards.Add(dashboard);
@@ -104,7 +104,7 @@ namespace MyDashboard.Console
 
             foreach (var item in dashboards)
             {
-                dashboardsToSave.Add(new Dashboard(item.Id, item.Title,item.Order, item.Url, item.UserId));
+                dashboardsToSave.Add(new Dashboard(new Guid(item.Id) , item.Title,item.Order, item.Url, new Guid(item.CustomerId)));
             }
 
 
